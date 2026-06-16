@@ -1,0 +1,45 @@
+{
+  "name": "compass-download",
+  "$schema": "../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "23 Compass.Download/src",
+  "projectType": "library",
+  "targets": {
+    "build": {
+      "executor": "nx:run-commands",
+      "options": {
+        "command": "cargo build --release",
+        "cwd": "23 Compass.Download"
+      }
+    },
+    "test": {
+      "executor": "nx:run-commands",
+      "options": {
+        "command": "cargo test",
+        "cwd": "23 Compass.Download"
+      }
+    },
+    "lint": {
+      "executor": "nx:run-commands",
+      "options": {
+        "command": "cargo clippy",
+        "cwd": "23 Compass.Download"
+      }
+    },
+    "check": {
+      "executor": "nx:run-commands",
+      "options": {
+        "command": "cargo check",
+        "cwd": "23 Compass.Download"
+      }
+    },
+    "fmt": {
+      "executor": "nx:run-commands",
+      "options": {
+        "command": "cargo fmt",
+        "cwd": "23 Compass.Download"
+      }
+    }
+  },
+  "tags": ["lib", "rust"],
+  "implicitDependencies": ["compass-core"]
+}

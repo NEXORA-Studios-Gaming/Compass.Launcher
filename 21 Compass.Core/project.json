@@ -1,0 +1,44 @@
+{
+  "name": "compass-core",
+  "$schema": "../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "21 Compass.Core/src",
+  "projectType": "library",
+  "targets": {
+    "build": {
+      "executor": "nx:run-commands",
+      "options": {
+        "command": "cargo build --release",
+        "cwd": "21 Compass.Core"
+      }
+    },
+    "test": {
+      "executor": "nx:run-commands",
+      "options": {
+        "command": "cargo test",
+        "cwd": "21 Compass.Core"
+      }
+    },
+    "lint": {
+      "executor": "nx:run-commands",
+      "options": {
+        "command": "cargo clippy",
+        "cwd": "21 Compass.Core"
+      }
+    },
+    "check": {
+      "executor": "nx:run-commands",
+      "options": {
+        "command": "cargo check",
+        "cwd": "21 Compass.Core"
+      }
+    },
+    "fmt": {
+      "executor": "nx:run-commands",
+      "options": {
+        "command": "cargo fmt",
+        "cwd": "21 Compass.Core"
+      }
+    }
+  },
+  "tags": ["lib", "rust", "core"]
+}

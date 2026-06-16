@@ -1,0 +1,28 @@
+* text=auto eol=crlf
+
+# Source files
+*.rs text eol=crlf
+*.ts text eol=crlf
+*.tsx text eol=crlf
+*.js text eol=crlf
+*.jsx text eol=crlf
+*.json text eol=crlf
+*.toml text eol=crlf
+*.yaml text eol=crlf
+*.yml text eol=crlf
+*.md text eol=crlf
+
+# Lock files
+*.lock text eol=crlf
+
+# Binary files
+*.png binary
+*.jpg binary
+*.jpeg binary
+*.gif binary
+*.ico binary
+*.icns binary
+*.woff binary
+*.woff2 binary
+*.ttf binary
+*.eot binary

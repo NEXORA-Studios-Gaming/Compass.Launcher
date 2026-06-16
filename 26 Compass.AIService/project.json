@@ -1,0 +1,52 @@
+{
+  "name": "compass-ai-service",
+  "$schema": "../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "26 Compass.AIService/src",
+  "projectType": "application",
+  "targets": {
+    "build": {
+      "executor": "nx:run-commands",
+      "options": {
+        "command": "cargo build --release",
+        "cwd": "26 Compass.AIService"
+      }
+    },
+    "run": {
+      "executor": "nx:run-commands",
+      "options": {
+        "command": "cargo run",
+        "cwd": "26 Compass.AIService"
+      }
+    },
+    "test": {
+      "executor": "nx:run-commands",
+      "options": {
+        "command": "cargo test",
+        "cwd": "26 Compass.AIService"
+      }
+    },
+    "lint": {
+      "executor": "nx:run-commands",
+      "options": {
+        "command": "cargo clippy",
+        "cwd": "26 Compass.AIService"
+      }
+    },
+    "check": {
+      "executor": "nx:run-commands",
+      "options": {
+        "command": "cargo check",
+        "cwd": "26 Compass.AIService"
+      }
+    },
+    "fmt": {
+      "executor": "nx:run-commands",
+      "options": {
+        "command": "cargo fmt",
+        "cwd": "26 Compass.AIService"
+      }
+    }
+  },
+  "tags": ["app", "rust", "ai"],
+  "implicitDependencies": ["compass-core"]
+}

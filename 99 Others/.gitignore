@@ -1,0 +1,6 @@
+# This folder is used to put all the content that does not related to the project.
+# You may put any temporary files or using ai to generate documents via js files here.
+
+**/*
+*
+!.gitignore

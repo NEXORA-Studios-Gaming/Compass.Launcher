@@ -1,0 +1,53 @@
+#!/bin/sh
+#
+# Pre-commit hook for Compass Launcher
+# Runs formatting and linting checks before allowing commits
+#
+
+echo "🔍 Running pre-commit checks..."
+
+# Store the current directory
+REPO_ROOT="$(git rev-parse --show-toplevel)"
+cd "$REPO_ROOT"
+
+# Check if nr is available
+if ! command -v nr >/dev/null 2>&1; then
+    echo "❌ Error: 'nr' command not found. Please install it: npm install -g @antfu/ni"
+    exit 1
+fi
+
+# Run formatting
+echo "🎨 Running formatter..."
+nr fmt
+FMT_EXIT_CODE=$?
+
+if [ $FMT_EXIT_CODE -ne 0 ]; then
+    echo "❌ Formatting failed. Please fix the issues above and try again."
+    exit 1
+fi
+
+# Run linting
+echo "🔎 Running linter..."
+nr lint
+LINT_EXIT_CODE=$?
+
+if [ $LINT_EXIT_CODE -ne 0 ]; then
+    echo "❌ Linting failed. Please fix the issues above and try again."
+    exit 1
+fi
+
+# Run TypeScript check for client app
+echo "📘 Running TypeScript check..."
+cd "$REPO_ROOT/10 Compass.Client.App"
+nr typecheck 2>/dev/null || pnpm exec tsc --noEmit
+TS_EXIT_CODE=$?
+
+if [ $TS_EXIT_CODE -ne 0 ]; then
+    echo "❌ TypeScript check failed. Please fix type errors and try again."
+    exit 1
+fi
+
+cd "$REPO_ROOT"
+
+echo "✅ All pre-commit checks passed!"
+exit 0

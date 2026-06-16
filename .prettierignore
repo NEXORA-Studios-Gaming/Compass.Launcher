@@ -1,0 +1,8 @@
+node_modules
+dist
+target
+.nx
+coverage
+Cargo.lock
+pnpm-lock.yaml
+**/*.gen.ts

@@ -1,0 +1,45 @@
+{
+  "name": "compass-minecraft",
+  "$schema": "../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "25 Compass.Minecraft/src",
+  "projectType": "library",
+  "targets": {
+    "build": {
+      "executor": "nx:run-commands",
+      "options": {
+        "command": "cargo build --release",
+        "cwd": "25 Compass.Minecraft"
+      }
+    },
+    "test": {
+      "executor": "nx:run-commands",
+      "options": {
+        "command": "cargo test",
+        "cwd": "25 Compass.Minecraft"
+      }
+    },
+    "lint": {
+      "executor": "nx:run-commands",
+      "options": {
+        "command": "cargo clippy",
+        "cwd": "25 Compass.Minecraft"
+      }
+    },
+    "check": {
+      "executor": "nx:run-commands",
+      "options": {
+        "command": "cargo check",
+        "cwd": "25 Compass.Minecraft"
+      }
+    },
+    "fmt": {
+      "executor": "nx:run-commands",
+      "options": {
+        "command": "cargo fmt",
+        "cwd": "25 Compass.Minecraft"
+      }
+    }
+  },
+  "tags": ["lib", "rust"],
+  "implicitDependencies": ["compass-core", "compass-config", "compass-download", "compass-auth"]
+}

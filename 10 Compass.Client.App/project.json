@@ -1,0 +1,62 @@
+{
+    "name": "compass-client-app",
+    "$schema": "../../node_modules/nx/schemas/project-schema.json",
+    "sourceRoot": "10 Compass.Client.App/Compass.Client.App/src",
+    "projectType": "application",
+    "targets": {
+        "build": {
+            "executor": "nx:run-script",
+            "options": {
+                "script": "build"
+            },
+            "configurations": {
+                "production": {
+                    "script": "build"
+                }
+            }
+        },
+        "serve": {
+            "executor": "nx:run-script",
+            "options": {
+                "script": "dev"
+            }
+        },
+        "preview": {
+            "executor": "nx:run-script",
+            "options": {
+                "script": "preview"
+            }
+        },
+        "tauri": {
+            "executor": "nx:run-script",
+            "options": {
+                "script": "tauri"
+            }
+        },
+        "tauri-dev": {
+            "executor": "nx:run-script",
+            "options": {
+                "script": "tauri dev"
+            }
+        },
+        "tauri-build": {
+            "executor": "nx:run-script",
+            "options": {
+                "script": "tauri build"
+            }
+        },
+        "lint": {
+            "executor": "nx:run-script",
+            "options": {
+                "script": "lint"
+            }
+        },
+        "fmt": {
+            "executor": "nx:run-script",
+            "options": {
+                "script": "format"
+            }
+        }
+    },
+    "tags": ["app", "tauri", "react"]
+}

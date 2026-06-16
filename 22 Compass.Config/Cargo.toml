@@ -1,0 +1,27 @@
+[package]
+name = "compass-config"
+version = "0.1.0"
+edition = "2021"
+authors = ["NEXORA Studios <jim.lin@nexora-studios.tech>"]
+license = "Apache-2.0"
+description = "Configuration management for Compass Launcher"
+
+[dependencies]
+compass-core = { path = "../21 Compass.Core" }
+
+serde = { version = "1.0", features = ["derive"] }
+serde_json = "1.0"
+serde_yaml = "0.9"
+toml = "0.8"
+tokio = { version = "1.35", features = ["full"] }
+tracing = "0.1"
+notify = { version = "6.0", optional = true }
+schemars = "0.8"
+validator = "0.16"
+
+[features]
+default = ["json", "yaml", "toml"]
+json = []
+yaml = []
+toml = []
+hot-reload = ["notify"]

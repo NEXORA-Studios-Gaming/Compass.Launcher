@@ -1,0 +1,40 @@
+#!/bin/sh
+#
+# Pre-push hook for Compass Launcher
+# Runs comprehensive checks before pushing to remote
+#
+
+echo "🚀 Running pre-push checks..."
+
+# Store the current directory
+REPO_ROOT="$(git rev-parse --show-toplevel)"
+cd "$REPO_ROOT"
+
+# Check if nr is available
+if ! command -v nr >/dev/null 2>&1; then
+    echo "❌ Error: 'nr' command not found. Please install it: npm install -g @antfu/ni"
+    exit 1
+fi
+
+# Run full check (lint + fmt:check + test)
+echo "🔍 Running full check suite..."
+nr check
+CHECK_EXIT_CODE=$?
+
+if [ $CHECK_EXIT_CODE -ne 0 ]; then
+    echo "❌ Pre-push checks failed. Please fix the issues above before pushing."
+    exit 1
+fi
+
+# Run Rust-specific checks
+echo "🦀 Running Rust workspace checks..."
+nr check:rs
+RS_CHECK_EXIT_CODE=$?
+
+if [ $RS_CHECK_EXIT_CODE -ne 0 ]; then
+    echo "❌ Rust checks failed. Please fix the issues above before pushing."
+    exit 1
+fi
+
+echo "✅ All pre-push checks passed! Ready to push."
+exit 0

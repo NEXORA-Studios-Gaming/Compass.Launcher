@@ -1,0 +1,45 @@
+{
+  "name": "compass-config",
+  "$schema": "../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "22 Compass.Config/src",
+  "projectType": "library",
+  "targets": {
+    "build": {
+      "executor": "nx:run-commands",
+      "options": {
+        "command": "cargo build --release",
+        "cwd": "22 Compass.Config"
+      }
+    },
+    "test": {
+      "executor": "nx:run-commands",
+      "options": {
+        "command": "cargo test",
+        "cwd": "22 Compass.Config"
+      }
+    },
+    "lint": {
+      "executor": "nx:run-commands",
+      "options": {
+        "command": "cargo clippy",
+        "cwd": "22 Compass.Config"
+      }
+    },
+    "check": {
+      "executor": "nx:run-commands",
+      "options": {
+        "command": "cargo check",
+        "cwd": "22 Compass.Config"
+      }
+    },
+    "fmt": {
+      "executor": "nx:run-commands",
+      "options": {
+        "command": "cargo fmt",
+        "cwd": "22 Compass.Config"
+      }
+    }
+  },
+  "tags": ["lib", "rust"],
+  "implicitDependencies": ["compass-core"]
+}

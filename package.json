@@ -1,0 +1,31 @@
+{
+    "name": "@compass-launcher/source",
+    "version": "0.1.0",
+    "description": "Compass Launcher - A modern Minecraft launcher",
+    "author": "NEXORA Studios <jim.lin@nexora-studios.tech>",
+    "license": "AGPL-3.0-only",
+    "private": true,
+    "type": "module",
+    "scripts": {
+        "dev": "nx run compass-client-app:tauri-dev",
+        "build": "nx run compass-client-app:tauri-build",
+        "test": "nx run-many -t test",
+        "test:rs": "cargo test --workspace",
+        "lint": "nx run-many -t lint",
+        "lint:rs": "cargo clippy --workspace -- -D warnings",
+        "fmt": "nx run-many -t fmt",
+        "fmt:check": "cargo fmt --check",
+        "check": "nr lint && nr fmt:check && nr test",
+        "check:rs": "cargo check --workspace",
+        "clean": "nx reset && cargo clean"
+    },
+    "devDependencies": {
+        "@nx/workspace": "^22.7.5",
+        "@tanstack/router-devtools": "^1.167.0",
+        "@tanstack/router-plugin": "^1.168.18",
+        "nx": "^22.7.5"
+    },
+    "workspaces": [
+        "10 Compass.Client.App"
+    ]
+}

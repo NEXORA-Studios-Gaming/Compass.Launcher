@@ -1,0 +1,41 @@
+#!/bin/sh
+#
+# Commit message hook for Compass Launcher
+# Validates commit message format
+#
+
+COMMIT_MSG_FILE="$1"
+COMMIT_MSG=$(head -n1 "$COMMIT_MSG_FILE")
+
+# Check if commit message is empty
+if [ -z "$COMMIT_MSG" ]; then
+    echo "❌ Commit message cannot be empty"
+    exit 1
+fi
+
+# Check commit message length (should be less than 72 characters for the first line)
+MSG_LENGTH=${#COMMIT_MSG}
+if [ $MSG_LENGTH -gt 72 ]; then
+    echo "⚠️  Warning: Commit message subject is longer than 72 characters ($MSG_LENGTH chars)"
+    echo "   Consider making it shorter for better readability"
+fi
+
+# Check for conventional commit format (optional but recommended)
+# Pattern: type(scope): message
+# Types: feat, fix, docs, style, refactor, test, chore, ci, build
+CONVENTIONAL_PATTERN="^(feat|fix|docs|style|refactor|test|chore|ci|build)(\(.+\))?: .+"
+
+if ! echo "$COMMIT_MSG" | grep -qE "$CONVENTIONAL_PATTERN"; then
+    echo "⚠️  Warning: Commit message doesn't follow conventional commit format"
+    echo "   Expected format: <type>(<scope>): <message>"
+    echo "   Types: feat, fix, docs, style, refactor, test, chore, ci, build"
+    echo ""
+    echo "   Examples:"
+    echo "     feat(auth): add OAuth login support"
+    echo "     fix(core): resolve memory leak in download manager"
+    echo "     docs: update README with installation instructions"
+    echo ""
+    echo "   Commit will proceed, but consider using conventional commits for better changelog generation."
+fi
+
+exit 0
