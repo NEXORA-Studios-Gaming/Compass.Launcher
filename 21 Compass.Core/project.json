@@ -1,44 +1,65 @@
 {
   "name": "compass-core",
   "$schema": "../node_modules/nx/schemas/project-schema.json",
-  "sourceRoot": "21 Compass.Core/src",
+  "sourceRoot": "21 Compass.Core",
   "projectType": "library",
   "targets": {
     "build": {
       "executor": "nx:run-commands",
       "options": {
-        "command": "cargo build --release",
+        "command": "dotnet build --configuration Release",
         "cwd": "21 Compass.Core"
       }
     },
     "test": {
       "executor": "nx:run-commands",
       "options": {
-        "command": "cargo test",
+        "command": "dotnet test --no-build",
         "cwd": "21 Compass.Core"
       }
     },
     "lint": {
       "executor": "nx:run-commands",
       "options": {
-        "command": "cargo clippy",
+        "command": "dotnet format --verify-no-changes",
         "cwd": "21 Compass.Core"
       }
     },
     "check": {
       "executor": "nx:run-commands",
       "options": {
-        "command": "cargo check",
+        "command": "dotnet build --no-restore",
         "cwd": "21 Compass.Core"
       }
     },
     "fmt": {
       "executor": "nx:run-commands",
       "options": {
-        "command": "cargo fmt",
+        "command": "dotnet format",
+        "cwd": "21 Compass.Core"
+      }
+    },
+    "restore": {
+      "executor": "nx:run-commands",
+      "options": {
+        "command": "dotnet restore",
+        "cwd": "21 Compass.Core"
+      }
+    },
+    "clean": {
+      "executor": "nx:run-commands",
+      "options": {
+        "command": "dotnet clean",
+        "cwd": "21 Compass.Core"
+      }
+    },
+    "pack": {
+      "executor": "nx:run-commands",
+      "options": {
+        "command": "dotnet pack --configuration Release",
         "cwd": "21 Compass.Core"
       }
     }
   },
-  "tags": ["lib", "rust", "core"]
+  "tags": ["lib", "dotnet", "core"]
 }

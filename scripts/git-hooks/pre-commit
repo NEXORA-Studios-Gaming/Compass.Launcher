@@ -18,7 +18,7 @@ fi
 
 # Run formatting
 echo "🎨 Running formatter..."
-nr fmt
+NX_INTERACTIVE=false nr fmt
 FMT_EXIT_CODE=$?
 
 if [ $FMT_EXIT_CODE -ne 0 ]; then
@@ -28,7 +28,7 @@ fi
 
 # Run linting
 echo "🔎 Running linter..."
-nr lint
+NX_INTERACTIVE=false nr lint
 LINT_EXIT_CODE=$?
 
 if [ $LINT_EXIT_CODE -ne 0 ]; then

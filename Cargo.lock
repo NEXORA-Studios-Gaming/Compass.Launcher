@@ -450,7 +450,6 @@ name = "compass-ai-service"
 version = "0.1.0"
 dependencies = [
  "axum",
- "compass-core",
  "interprocess",
  "serde",
  "serde_json",
@@ -463,7 +462,6 @@ dependencies = [
 name = "compass-auth"
 version = "0.1.0"
 dependencies = [
- "compass-core",
  "jsonwebtoken",
  "keyring",
  "oauth2",
@@ -478,7 +476,6 @@ dependencies = [
 name = "compass-config"
 version = "0.1.0"
 dependencies = [
- "compass-core",
  "notify",
  "schemars",
  "serde",
@@ -491,24 +488,10 @@ dependencies = [
 ]
 
 [[package]]
-name = "compass-core"
-version = "0.1.0"
-dependencies = [
- "dirs",
- "hex",
- "serde",
- "sha2",
- "thiserror 1.0.69",
- "tokio",
- "tracing",
-]
-
-[[package]]
 name = "compass-download"
 version = "0.1.0"
 dependencies = [
  "bytes",
- "compass-core",
  "futures",
  "pin-project",
  "reqwest",
@@ -525,10 +508,6 @@ dependencies = [
 name = "compass-minecraft"
 version = "0.1.0"
 dependencies = [
- "compass-auth",
- "compass-config",
- "compass-core",
- "compass-download",
  "semver",
  "serde",
  "serde_json",
@@ -685,27 +664,6 @@ dependencies = [
  "block-buffer",
  "crypto-common",
  "subtle",
-]
-
-[[package]]
-name = "dirs"
-version = "5.0.1"
-source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "44c45a9d03d6676652bcb5e724c7e988de1acad23a711b5217ab9cbecbec2225"
-dependencies = [
- "dirs-sys",
-]
-
-[[package]]
-name = "dirs-sys"
-version = "0.4.1"
-source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "520f05a5cbd335fae5a99ff7a6ab8627577660ee5cfd6a94a6a929b52ff0321c"
-dependencies = [
- "libc",
- "option-ext",
- "redox_users",
- "windows-sys 0.48.0",
 ]
 
 [[package]]
@@ -1647,15 +1605,6 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "68ab91017fe16c622486840e4c83c9a37afeff978bd239b5293d61ece587de66"
 
 [[package]]
-name = "libredox"
-version = "0.1.17"
-source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "f02ab6bace2054fb888a3c16f990117b579d14a3088e472d63c6011fa185c9d3"
-dependencies = [
- "libc",
-]
-
-[[package]]
 name = "linux-keyutils"
 version = "0.2.5"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -1989,12 +1938,6 @@ dependencies = [
 ]
 
 [[package]]
-name = "option-ext"
-version = "0.2.0"
-source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "04744f49eae99ab78e0d5c0b603ab218f515ea8cfe5a456d7629ad883a3b6e7d"
-
-[[package]]
 name = "ordered-stream"
 version = "0.2.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -2276,17 +2219,6 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "ed2bf2547551a7053d6fdfafda3f938979645c44812fbfcda098faae3f1a362d"
 dependencies = [
  "bitflags 2.13.0",
-]
-
-[[package]]
-name = "redox_users"
-version = "0.4.6"
-source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "ba009ff324d1fc1b900bd1fdb31564febe58a8ccc8a6fdbb93b543d33b13ca43"
-dependencies = [
- "getrandom 0.2.17",
- "libredox",
- "thiserror 1.0.69",
 ]
 
 [[package]]

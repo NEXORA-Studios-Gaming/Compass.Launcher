@@ -7,11 +7,6 @@ license = "Apache-2.0"
 description = "Minecraft core library for Compass Launcher"
 
 [dependencies]
-compass-core = { path = "../21 Compass.Core" }
-compass-config = { path = "../22 Compass.Config" }
-compass-download = { path = "../23 Compass.Download" }
-compass-auth = { path = "../24 Compass.Auth" }
-
 serde = { version = "1.0", features = ["derive"] }
 serde_json = "1.0"
 tokio = { version = "1.35", features = ["full"] }

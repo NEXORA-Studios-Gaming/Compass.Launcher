@@ -2,7 +2,6 @@
 resolver = "3"
 
 members = [
-    "21 Compass.Core",
     "22 Compass.Config",
     "23 Compass.Download",
     "24 Compass.Auth",
