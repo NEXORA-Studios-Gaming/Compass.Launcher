@@ -2,6 +2,7 @@
 resolver = "3"
 
 members = [
+    "10 Compass.Client.App/src-tauri",
     "22 Compass.Config",
     "23 Compass.Download",
     "24 Compass.Auth",

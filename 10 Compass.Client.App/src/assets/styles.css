@@ -146,3 +146,72 @@ body {
         @apply font-sans;
     }
 }
+
+/* Minecraft Theme Colors */
+@theme inline {
+    /* Minecraft Colors */
+    --color-mc-diamond: #00FFFF;
+    --color-mc-gold: #FFD700;
+    --color-mc-redstone: #B02E26;
+    --color-mc-lapis: #2C2E8F;
+    --color-mc-obsidian: #2D0A31;
+    --color-mc-emerald: #50C878;
+
+    /* Minecraft Grass Theme - Primary */
+    --color-grass: #5D8C3A;
+    --color-grass-dark: #4A7030;
+    --color-grass-light: #7FB347;
+    --color-dirt: #8B6914;
+
+    /* Status Colors */
+    --color-success: #55AA55;
+    --color-warning: #FFAA00;
+    --color-error: #FF5555;
+    --color-info: #55AAFF;
+}
+
+/* Custom Animations */
+@keyframes pulse-glow {
+    0%, 100% {
+        box-shadow: 0 0 20px rgba(93, 140, 58, 0.3);
+    }
+    50% {
+        box-shadow: 0 0 30px rgba(93, 140, 58, 0.5);
+    }
+}
+
+@keyframes float {
+    0%, 100% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-4px);
+    }
+}
+
+.animate-pulse-glow {
+    animation: pulse-glow 2s ease-in-out infinite;
+}
+
+.animate-float {
+    animation: float 3s ease-in-out infinite;
+}
+
+/* Scrollbar Styling */
+::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+    background: hsl(var(--border));
+    border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: hsl(var(--muted-foreground));
+}

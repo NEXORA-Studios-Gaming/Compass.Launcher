@@ -8,68 +8,203 @@
 // You should NOT make any changes in this file as it will be overwritten.
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
-import { Route as rootRouteImport } from "./routes/__root";
-import { Route as AboutRouteImport } from "./routes/about";
-import { Route as IndexRouteImport } from "./routes/index";
+import { Route as rootRouteImport } from './routes/__root'
+import { Route as AboutRouteImport } from './routes/about'
+import { Route as SplatRouteImport } from './routes/$'
+import { Route as IndexRouteImport } from './routes/index'
+import { Route as SettingsLauncherRouteImport } from './routes/settings/launcher'
+import { Route as SettingsGlobalRouteImport } from './routes/settings/global'
+import { Route as InstanceNewRouteImport } from './routes/instance/new'
+import { Route as CompsFavoritesRouteImport } from './routes/comps/favorites'
+import { Route as CompsDownloadRouteImport } from './routes/comps/download'
 
 const AboutRoute = AboutRouteImport.update({
-    id: "/about",
-    path: "/about",
-    getParentRoute: () => rootRouteImport,
-} as any);
+  id: '/about',
+  path: '/about',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const SplatRoute = SplatRouteImport.update({
+  id: '/$',
+  path: '/$',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const IndexRoute = IndexRouteImport.update({
-    id: "/",
-    path: "/",
-    getParentRoute: () => rootRouteImport,
-} as any);
+  id: '/',
+  path: '/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const SettingsLauncherRoute = SettingsLauncherRouteImport.update({
+  id: '/settings/launcher',
+  path: '/settings/launcher',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const SettingsGlobalRoute = SettingsGlobalRouteImport.update({
+  id: '/settings/global',
+  path: '/settings/global',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const InstanceNewRoute = InstanceNewRouteImport.update({
+  id: '/instance/new',
+  path: '/instance/new',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const CompsFavoritesRoute = CompsFavoritesRouteImport.update({
+  id: '/comps/favorites',
+  path: '/comps/favorites',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const CompsDownloadRoute = CompsDownloadRouteImport.update({
+  id: '/comps/download',
+  path: '/comps/download',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
-    "/": typeof IndexRoute;
-    "/about": typeof AboutRoute;
+  '/': typeof IndexRoute
+  '/$': typeof SplatRoute
+  '/about': typeof AboutRoute
+  '/comps/download': typeof CompsDownloadRoute
+  '/comps/favorites': typeof CompsFavoritesRoute
+  '/instance/new': typeof InstanceNewRoute
+  '/settings/global': typeof SettingsGlobalRoute
+  '/settings/launcher': typeof SettingsLauncherRoute
 }
 export interface FileRoutesByTo {
-    "/": typeof IndexRoute;
-    "/about": typeof AboutRoute;
+  '/': typeof IndexRoute
+  '/$': typeof SplatRoute
+  '/about': typeof AboutRoute
+  '/comps/download': typeof CompsDownloadRoute
+  '/comps/favorites': typeof CompsFavoritesRoute
+  '/instance/new': typeof InstanceNewRoute
+  '/settings/global': typeof SettingsGlobalRoute
+  '/settings/launcher': typeof SettingsLauncherRoute
 }
 export interface FileRoutesById {
-    __root__: typeof rootRouteImport;
-    "/": typeof IndexRoute;
-    "/about": typeof AboutRoute;
+  __root__: typeof rootRouteImport
+  '/': typeof IndexRoute
+  '/$': typeof SplatRoute
+  '/about': typeof AboutRoute
+  '/comps/download': typeof CompsDownloadRoute
+  '/comps/favorites': typeof CompsFavoritesRoute
+  '/instance/new': typeof InstanceNewRoute
+  '/settings/global': typeof SettingsGlobalRoute
+  '/settings/launcher': typeof SettingsLauncherRoute
 }
 export interface FileRouteTypes {
-    fileRoutesByFullPath: FileRoutesByFullPath;
-    fullPaths: "/" | "/about";
-    fileRoutesByTo: FileRoutesByTo;
-    to: "/" | "/about";
-    id: "__root__" | "/" | "/about";
-    fileRoutesById: FileRoutesById;
+  fileRoutesByFullPath: FileRoutesByFullPath
+  fullPaths:
+    | '/'
+    | '/$'
+    | '/about'
+    | '/comps/download'
+    | '/comps/favorites'
+    | '/instance/new'
+    | '/settings/global'
+    | '/settings/launcher'
+  fileRoutesByTo: FileRoutesByTo
+  to:
+    | '/'
+    | '/$'
+    | '/about'
+    | '/comps/download'
+    | '/comps/favorites'
+    | '/instance/new'
+    | '/settings/global'
+    | '/settings/launcher'
+  id:
+    | '__root__'
+    | '/'
+    | '/$'
+    | '/about'
+    | '/comps/download'
+    | '/comps/favorites'
+    | '/instance/new'
+    | '/settings/global'
+    | '/settings/launcher'
+  fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
-    IndexRoute: typeof IndexRoute;
-    AboutRoute: typeof AboutRoute;
+  IndexRoute: typeof IndexRoute
+  SplatRoute: typeof SplatRoute
+  AboutRoute: typeof AboutRoute
+  CompsDownloadRoute: typeof CompsDownloadRoute
+  CompsFavoritesRoute: typeof CompsFavoritesRoute
+  InstanceNewRoute: typeof InstanceNewRoute
+  SettingsGlobalRoute: typeof SettingsGlobalRoute
+  SettingsLauncherRoute: typeof SettingsLauncherRoute
 }
 
-declare module "@tanstack/react-router" {
-    interface FileRoutesByPath {
-        "/about": {
-            id: "/about";
-            path: "/about";
-            fullPath: "/about";
-            preLoaderRoute: typeof AboutRouteImport;
-            parentRoute: typeof rootRouteImport;
-        };
-        "/": {
-            id: "/";
-            path: "/";
-            fullPath: "/";
-            preLoaderRoute: typeof IndexRouteImport;
-            parentRoute: typeof rootRouteImport;
-        };
+declare module '@tanstack/react-router' {
+  interface FileRoutesByPath {
+    '/about': {
+      id: '/about'
+      path: '/about'
+      fullPath: '/about'
+      preLoaderRoute: typeof AboutRouteImport
+      parentRoute: typeof rootRouteImport
     }
+    '/$': {
+      id: '/$'
+      path: '/$'
+      fullPath: '/$'
+      preLoaderRoute: typeof SplatRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/': {
+      id: '/'
+      path: '/'
+      fullPath: '/'
+      preLoaderRoute: typeof IndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/settings/launcher': {
+      id: '/settings/launcher'
+      path: '/settings/launcher'
+      fullPath: '/settings/launcher'
+      preLoaderRoute: typeof SettingsLauncherRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/settings/global': {
+      id: '/settings/global'
+      path: '/settings/global'
+      fullPath: '/settings/global'
+      preLoaderRoute: typeof SettingsGlobalRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/instance/new': {
+      id: '/instance/new'
+      path: '/instance/new'
+      fullPath: '/instance/new'
+      preLoaderRoute: typeof InstanceNewRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/comps/favorites': {
+      id: '/comps/favorites'
+      path: '/comps/favorites'
+      fullPath: '/comps/favorites'
+      preLoaderRoute: typeof CompsFavoritesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/comps/download': {
+      id: '/comps/download'
+      path: '/comps/download'
+      fullPath: '/comps/download'
+      preLoaderRoute: typeof CompsDownloadRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+  }
 }
 
 const rootRouteChildren: RootRouteChildren = {
-    IndexRoute: IndexRoute,
-    AboutRoute: AboutRoute,
-};
-export const routeTree = rootRouteImport._addFileChildren(rootRouteChildren)._addFileTypes<FileRouteTypes>();
+  IndexRoute: IndexRoute,
+  SplatRoute: SplatRoute,
+  AboutRoute: AboutRoute,
+  CompsDownloadRoute: CompsDownloadRoute,
+  CompsFavoritesRoute: CompsFavoritesRoute,
+  InstanceNewRoute: InstanceNewRoute,
+  SettingsGlobalRoute: SettingsGlobalRoute,
+  SettingsLauncherRoute: SettingsLauncherRoute,
+}
+export const routeTree = rootRouteImport
+  ._addFileChildren(rootRouteChildren)
+  ._addFileTypes<FileRouteTypes>()
