@@ -1,0 +1,39 @@
+syntax = "proto3";
+
+package compass;
+
+option csharp_namespace = "Compass.Proto";
+
+// 通用响应包装
+message Response {
+    bool success = 1;
+    string error_code = 2;
+    string error_message = 3;
+    bytes data = 4;
+}
+
+// 分页请求
+message PageRequest {
+    int32 page = 1;
+    int32 page_size = 2;
+}
+
+// 分页响应
+message PageResponse {
+    int32 total = 1;
+    int32 page = 2;
+    int32 page_size = 3;
+}
+
+// 空请求/响应
+message Empty {}
+
+// 进度信息
+message Progress {
+    string id = 1;
+    string stage = 2;      // 当前阶段
+    float percentage = 3;  // 0-100
+    int64 total_bytes = 4;
+    int64 downloaded_bytes = 5;
+    int64 speed_bps = 6;   // bytes per second
+}

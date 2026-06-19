@@ -1,0 +1,128 @@
+syntax = "proto3";
+
+package compass.instance;
+
+option csharp_namespace = "Compass.Proto.Instance";
+
+import "compass/common.proto";
+
+// Mod 加载器类型
+enum ModLoaderType {
+    NONE = 0;
+    FORGE = 1;
+    FABRIC = 2;
+    QUILT = 3;
+    NEOFORGE = 4;
+}
+
+// Mod 加载器信息
+message ModLoaderInfo {
+    ModLoaderType type = 1;
+    string version = 2;
+    string raw_version = 3;
+}
+
+// 实例信息
+message Instance {
+    string id = 1;
+    string name = 2;
+    string version_id = 3;
+    ModLoaderInfo loader = 4;
+    string game_path = 5;
+    string icon = 6;
+    string created_at = 7;  // ISO 8601
+    string last_played = 8;  // ISO 8601
+    int64 play_time = 9;  // seconds
+    int32 launch_count = 10;
+    InstanceSettings settings = 11;
+}
+
+// 实例特定设置
+message InstanceSettings {
+    // 继承全局设置，可覆盖
+    int32 max_memory = 1;
+    int32 min_memory = 2;
+    WindowSettings window = 3;
+    repeated string jvm_args = 4;
+    repeated string game_args = 5;
+    string java_path = 6;
+}
+
+// 窗口设置
+message WindowSettings {
+    int32 width = 1;
+    int32 height = 2;
+    bool fullscreen = 3;
+}
+
+// 创建实例请求
+message CreateInstanceRequest {
+    string name = 1;
+    string version_id = 2;
+    ModLoaderInfo loader = 3;
+    string game_path = 4;
+    string icon = 5;
+}
+
+// 创建实例响应
+message CreateInstanceResponse {
+    bool success = 1;
+    Instance instance = 2;
+    string error_message = 3;
+}
+
+// 获取实例列表请求
+message GetInstancesRequest {}
+
+// 获取实例列表响应
+message GetInstancesResponse {
+    repeated Instance instances = 1;
+}
+
+// 获取实例详情请求
+message GetInstanceRequest {
+    string instance_id = 1;
+}
+
+// 获取实例详情响应
+message GetInstanceResponse {
+    Instance instance = 1;
+}
+
+// 更新实例请求
+message UpdateInstanceRequest {
+    Instance instance = 1;
+}
+
+// 更新实例响应
+message UpdateInstanceResponse {
+    bool success = 1;
+    string error_message = 2;
+}
+
+// 删除实例请求
+message DeleteInstanceRequest {
+    string instance_id = 1;
+    bool delete_files = 2;
+}
+
+// 删除实例响应
+message DeleteInstanceResponse {
+    bool success = 1;
+    string error_message = 2;
+}
+
+// 导入实例请求
+message ImportInstanceRequest {
+    string source_path = 1;
+    string import_type = 2;  // "hmcl", "pcl", "curseforge", "modrinth"
+}
+
+// 导出实例请求
+message ExportInstanceRequest {
+    string instance_id = 1;
+    string target_path = 2;
+    bool include_saves = 3;
+    bool include_mods = 4;
+    bool include_config = 5;
+}

@@ -1,0 +1,79 @@
+syntax = "proto3";
+
+package compass.auth;
+
+option csharp_namespace = "Compass.Proto.Auth";
+
+import "compass/common.proto";
+
+// 账号类型
+enum AccountType {
+    MICROSOFT = 0;
+    OFFLINE = 1;
+}
+
+// 账号信息
+message Account {
+    string id = 1;
+    AccountType type = 2;
+    string username = 3;
+    string uuid = 4;
+    string access_token = 5;
+    int64 expires_at = 6;  // Unix timestamp
+    string profile_data = 7;  // JSON string
+    bool is_active = 8;
+}
+
+// 微软 OAuth 登录请求
+message LoginMicrosoftRequest {
+    string auth_code = 1;
+}
+
+// 离线登录请求
+message LoginOfflineRequest {
+    string username = 1;
+    string uuid = 2;  // 可选，不传则自动生成
+}
+
+// 登录响应
+message LoginResponse {
+    bool success = 1;
+    Account account = 2;
+    string error_message = 3;
+}
+
+// 刷新 Token 请求
+message RefreshTokenRequest {
+    string account_id = 1;
+}
+
+// 获取账号列表请求
+message GetAccountsRequest {
+    bool include_expired = 1;
+}
+
+// 获取账号列表响应
+message GetAccountsResponse {
+    repeated Account accounts = 1;
+}
+
+// 切换账号请求
+message SwitchAccountRequest {
+    string account_id = 1;
+}
+
+// 删除账号请求
+message DeleteAccountRequest {
+    string account_id = 1;
+}
+
+// 验证 Token 请求
+message ValidateTokenRequest {
+    string account_id = 1;
+}
+
+// 验证 Token 响应
+message ValidateTokenResponse {
+    bool valid = 1;
+    int64 expires_in = 2;  // seconds
+}

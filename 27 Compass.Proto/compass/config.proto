@@ -1,0 +1,78 @@
+syntax = "proto3";
+
+package compass.config;
+
+option csharp_namespace = "Compass.Proto.Config";
+
+import "compass/common.proto";
+
+// 游戏设置
+message GameSettings {
+    string game_path = 1;
+    string java_path = 2;
+    int32 max_memory = 3;  // MB
+    int32 min_memory = 4;  // MB
+    WindowSettings window = 5;
+    repeated string jvm_args = 6;
+    repeated string game_args = 7;
+}
+
+// 窗口设置
+message WindowSettings {
+    int32 width = 1;
+    int32 height = 2;
+    bool fullscreen = 3;
+}
+
+// 启动器设置
+message LauncherSettings {
+    string theme = 1;  // "light", "dark", "auto"
+    string language = 2;
+    string update_policy = 3;  // "manual", "check", "auto"
+    bool close_after_launch = 4;
+    bool show_console = 5;
+}
+
+// 下载设置
+message DownloadSettings {
+    string download_source = 1;  // "official", "bmclapi"
+    int32 max_concurrent = 2;
+    int32 max_speed = 3;  // KB/s, 0 = unlimited
+    string proxy_host = 4;
+    int32 proxy_port = 5;
+}
+
+// 完整配置
+message LauncherConfig {
+    string version = 1;  // 配置版本
+    GameSettings game = 2;
+    LauncherSettings launcher = 3;
+    DownloadSettings download = 4;
+}
+
+// 获取配置请求
+message GetConfigRequest {
+    string key = 1;  // 空表示获取全部
+}
+
+// 获取配置响应
+message GetConfigResponse {
+    LauncherConfig config = 1;
+}
+
+// 更新配置请求
+message UpdateConfigRequest {
+    LauncherConfig config = 1;
+    repeated string changed_fields = 2;  // 变更的字段路径
+}
+
+// 更新配置响应
+message UpdateConfigResponse {
+    bool success = 1;
+    string error_message = 2;
+}
+
+// 重置配置请求
+message ResetConfigRequest {
+    string section = 1;  // "game", "launcher", "download", 空表示全部
+}

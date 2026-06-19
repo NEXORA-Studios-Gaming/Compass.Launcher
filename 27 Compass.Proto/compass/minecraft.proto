@@ -1,0 +1,106 @@
+syntax = "proto3";
+
+package compass.minecraft;
+
+option csharp_namespace = "Compass.Proto.Minecraft";
+
+import "compass/common.proto";
+
+// 版本类型
+enum VersionType {
+    RELEASE = 0;
+    SNAPSHOT = 1;
+    OLD_ALPHA = 2;
+    OLD_BETA = 3;
+}
+
+// 版本信息
+message VersionInfo {
+    string id = 1;
+    VersionType type = 2;
+    string url = 3;
+    string time = 4;  // ISO 8601
+    string release_time = 5;
+}
+
+// 版本清单
+message VersionManifest {
+    string latest_release = 1;
+    string latest_snapshot = 2;
+    repeated VersionInfo versions = 3;
+}
+
+// 获取版本清单请求
+message GetVersionManifestRequest {
+    bool force_refresh = 1;
+}
+
+// 获取版本清单响应
+message GetVersionManifestResponse {
+    VersionManifest manifest = 1;
+}
+
+// 安装版本请求
+message InstallVersionRequest {
+    string version_id = 1;
+}
+
+// 安装版本响应
+message InstallVersionResponse {
+    bool success = 1;
+    string error_message = 2;
+}
+
+// 启动游戏请求
+message LaunchGameRequest {
+    string instance_id = 1;
+    string account_id = 2;
+}
+
+// 启动游戏响应
+message LaunchGameResponse {
+    bool success = 1;
+    int64 process_id = 2;
+    string error_message = 3;
+}
+
+// 游戏日志条目
+message GameLogEntry {
+    string instance_id = 1;
+    int64 timestamp = 2;
+    string level = 3;  // INFO, WARN, ERROR, DEBUG
+    string source = 4;  // 日志来源
+    string message = 5;
+}
+
+// 订阅游戏日志请求
+message SubscribeGameLogsRequest {
+    string instance_id = 1;
+}
+
+// 停止游戏请求
+message StopGameRequest {
+    string instance_id = 1;
+    bool force = 2;
+}
+
+// 停止游戏响应
+message StopGameResponse {
+    bool success = 1;
+}
+
+// 获取运行中游戏请求
+message GetRunningGamesRequest {}
+
+// 运行中游戏信息
+message RunningGameInfo {
+    string instance_id = 1;
+    string version_id = 2;
+    int64 process_id = 3;
+    int64 start_time = 4;
+}
+
+// 获取运行中游戏响应
+message GetRunningGamesResponse {
+    repeated RunningGameInfo games = 1;
+}
