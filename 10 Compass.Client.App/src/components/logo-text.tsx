@@ -16,12 +16,7 @@ interface LogoTextProps {
  * 对应 30 Branding/Logo/svg/LogoText.svg
  * 支持传入主色，默认为白色
  */
-export const LogoText: React.FC<LogoTextProps> = ({
-    color = "#FFFFFF",
-    width = 326,
-    height = 100,
-    className = "",
-}) => {
+export const LogoText: React.FC<LogoTextProps> = ({ color = "#FFFFFF", width = 326, height = 100, className = "" }) => {
     return (
         <svg
             xmlns="http://www.w3.org/1999/xlink"

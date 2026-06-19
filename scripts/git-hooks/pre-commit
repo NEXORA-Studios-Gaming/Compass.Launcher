@@ -16,6 +16,9 @@ if ! command -v nr >/dev/null 2>&1; then
     exit 1
 fi
 
+# Get list of staged files before formatting (to re-add them later if modified)
+STAGED_FILES=$(git diff --cached --name-only --diff-filter=ACMR)
+
 # Run formatting
 echo "🎨 Running formatter..."
 NX_INTERACTIVE=false nr fmt
@@ -24,6 +27,12 @@ FMT_EXIT_CODE=$?
 if [ $FMT_EXIT_CODE -ne 0 ]; then
     echo "❌ Formatting failed. Please fix the issues above and try again."
     exit 1
+fi
+
+# Re-add any files that were modified by the formatter
+if [ -n "$STAGED_FILES" ]; then
+    echo "📝 Re-staging formatted files..."
+    echo "$STAGED_FILES" | xargs -r git add
 fi
 
 # Run linting

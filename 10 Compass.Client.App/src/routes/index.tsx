@@ -125,9 +125,7 @@ function HomeComponent() {
                                 <CardTitle>{feature.title}</CardTitle>
                                 <CardDescription>{feature.description}</CardDescription>
                             </CardHeader>
-                            <CardContent className="text-muted-foreground text-xs">
-                                敬请期待更多细节…
-                            </CardContent>
+                            <CardContent className="text-muted-foreground text-xs">敬请期待更多细节…</CardContent>
                         </Card>
                     </motion.div>
                 ))}

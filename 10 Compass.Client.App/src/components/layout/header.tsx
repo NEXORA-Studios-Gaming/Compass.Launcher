@@ -25,47 +25,27 @@ function getPageTitle(pathname: string): string {
     return titles[pathname] || "";
 }
 
-export function Header({
-    title,
-    showBack = false,
-    onBack,
-    actions,
-    className,
-}: HeaderProps) {
+export function Header({ title, showBack = false, onBack, actions, className }: HeaderProps) {
     const location = useLocation();
     const pageTitle = title || getPageTitle(location.pathname);
 
     return (
-        <header
-            className={cn(
-                "flex h-16 items-center justify-between border-b border-border bg-card px-6",
-                className
-            )}
-        >
+        <header className={cn("border-border bg-card flex h-16 items-center justify-between border-b px-6", className)}>
             {/* Left Section */}
             <div className="flex items-center gap-2">
-                <SidebarTrigger className="h-9 w-9 text-muted-foreground hover:text-foreground" />
+                <SidebarTrigger className="text-muted-foreground hover:text-foreground h-9 w-9" />
                 {showBack && (
-                    <Button
-                        variant="ghost"
-                        size="icon"
-                        onClick={onBack}
-                        className="h-9 w-9"
-                    >
+                    <Button variant="ghost" size="icon" onClick={onBack} className="h-9 w-9">
                         <ArrowLeft className="h-5 w-5" />
                     </Button>
                 )}
                 <div className="ml-2 flex h-9 items-center">
-                    <h1 className="text-[15px] font-semibold tracking-tight text-foreground">
-                        {pageTitle}
-                    </h1>
+                    <h1 className="text-foreground text-[15px] font-semibold tracking-tight">{pageTitle}</h1>
                 </div>
             </div>
 
             {/* Right Section - Actions */}
-            <div className="flex items-center gap-2">
-                {actions || <DefaultActions />}
-            </div>
+            <div className="flex items-center gap-2">{actions || <DefaultActions />}</div>
         </header>
     );
 }

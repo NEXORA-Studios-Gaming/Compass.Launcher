@@ -150,29 +150,30 @@ body {
 /* Minecraft Theme Colors */
 @theme inline {
     /* Minecraft Colors */
-    --color-mc-diamond: #00FFFF;
-    --color-mc-gold: #FFD700;
-    --color-mc-redstone: #B02E26;
-    --color-mc-lapis: #2C2E8F;
-    --color-mc-obsidian: #2D0A31;
-    --color-mc-emerald: #50C878;
+    --color-mc-diamond: #00ffff;
+    --color-mc-gold: #ffd700;
+    --color-mc-redstone: #b02e26;
+    --color-mc-lapis: #2c2e8f;
+    --color-mc-obsidian: #2d0a31;
+    --color-mc-emerald: #50c878;
 
     /* Minecraft Grass Theme - Primary */
-    --color-grass: #5D8C3A;
-    --color-grass-dark: #4A7030;
-    --color-grass-light: #7FB347;
-    --color-dirt: #8B6914;
+    --color-grass: #5d8c3a;
+    --color-grass-dark: #4a7030;
+    --color-grass-light: #7fb347;
+    --color-dirt: #8b6914;
 
     /* Status Colors */
-    --color-success: #55AA55;
-    --color-warning: #FFAA00;
-    --color-error: #FF5555;
-    --color-info: #55AAFF;
+    --color-success: #55aa55;
+    --color-warning: #ffaa00;
+    --color-error: #ff5555;
+    --color-info: #55aaff;
 }
 
 /* Custom Animations */
 @keyframes pulse-glow {
-    0%, 100% {
+    0%,
+    100% {
         box-shadow: 0 0 20px rgba(93, 140, 58, 0.3);
     }
     50% {
@@ -181,7 +182,8 @@ body {
 }
 
 @keyframes float {
-    0%, 100% {
+    0%,
+    100% {
         transform: translateY(0);
     }
     50% {

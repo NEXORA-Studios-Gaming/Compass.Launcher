@@ -55,12 +55,7 @@ export function Layout({
         return (
             <div className={cn("flex h-screen w-full overflow-hidden", className)}>
                 {/* Page Content */}
-                <main
-                    className={cn(
-                        "flex-1 overflow-auto bg-background p-6",
-                        contentClassName
-                    )}
-                >
+                <main className={cn("bg-background flex-1 overflow-auto p-6", contentClassName)}>
                     <Outlet />
                 </main>
             </div>
@@ -69,31 +64,21 @@ export function Layout({
 
     return (
         <SidebarProvider
-            style={{
-                "--sidebar-width": "12.5rem",
-                "--sidebar-width-icon": "4rem",
-            } as React.CSSProperties}>
+            style={
+                {
+                    "--sidebar-width": "12.5rem",
+                    "--sidebar-width-icon": "4rem",
+                } as React.CSSProperties
+            }>
             <div className={cn("flex h-screen w-full overflow-hidden", className)}>
                 <AppSidebar />
 
                 <SidebarInset>
                     {/* Header */}
-                    {!hideHeader && (
-                        <Header
-                            title={headerTitle}
-                            actions={headerActions}
-                            showBack={showBack}
-                            onBack={onBack}
-                        />
-                    )}
+                    {!hideHeader && <Header title={headerTitle} actions={headerActions} showBack={showBack} onBack={onBack} />}
 
                     {/* Page Content */}
-                    <main
-                        className={cn(
-                            "flex-1 overflow-auto bg-background p-6",
-                            contentClassName
-                        )}
-                    >
+                    <main className={cn("bg-background flex-1 overflow-auto p-6", contentClassName)}>
                         <Outlet />
                     </main>
                 </SidebarInset>
