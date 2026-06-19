@@ -32,7 +32,7 @@ fi
 # Re-add any files that were modified by the formatter
 if [ -n "$STAGED_FILES" ]; then
     echo "📝 Re-staging formatted files..."
-    echo "$STAGED_FILES" | xargs -r git add
+    echo "$STAGED_FILES" | xargs -d '\n' -r git add
 fi
 
 # Run linting
